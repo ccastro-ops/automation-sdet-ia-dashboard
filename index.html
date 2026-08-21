@@ -171,12 +171,12 @@
     </div>
     <div class="card stat-tile accent-blue">
       <div class="stat-label" data-i18n="statContactedLabel"></div>
-      <div class="stat-value">8</div>
+      <div class="stat-value">9</div>
       <div class="stat-hint" data-i18n="statContactedHint"></div>
     </div>
     <div class="card stat-tile accent-brown">
       <div class="stat-label" data-i18n="statCallsLabel"></div>
-      <div class="stat-value">0</div>
+      <div class="stat-value">2</div>
       <div class="stat-hint" data-i18n="statCallsHint"></div>
     </div>
     <div class="card stat-tile accent-yellow">
@@ -270,14 +270,15 @@
   }
 
   var candidates = [
-    { name: "Andrea Michel Acuña Acosta", linkedin: "https://www.linkedin.com/in/michelacostaa/", zoho: "", age: "", location: "", seniority: "", tools: "", languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
+    { name: "Andrea Michel Acuña Acosta", linkedin: "https://www.linkedin.com/in/michelacostaa/", zoho: "", age: "", location: "Hermosillo", seniority: "9 años de experiencia en ingeniería de software", tools: "Claude (generación de código/automatización)", languages: "", salary: "~50,000 MXN brutos (último salario reportado)", checklist: { ingles: "Amarillo", experiencia: "Verde", typescript: "", playwright: "Rojo", iaPractica: "Amarillo", validacionIA: "Verde", agile: "", comunicacion: "" }, extraSkills: "Cypress (herramienta principal de automatización); ha construido frameworks de automatización desde cero. Aún no ha utilizado Playwright." },
     { name: "Derek Obied Melendez Franco", linkedin: "https://www.linkedin.com/in/derek-obied-melendez-franco-102203279/", zoho: "", age: "", location: "", seniority: "", tools: "", languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
     { name: "Edgar Ivan Garza Dimas", linkedin: "https://www.linkedin.com/in/edgar-iv%C3%A1n-garza-dimas-bb619416b/", zoho: "", age: "", location: "", seniority: "", tools: "", languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
     { name: "Daniel Roger Gonzales", linkedin: "https://www.linkedin.com/in/daniel-roger-bo/", zoho: "", age: "", location: "", seniority: "", tools: "", languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
     { name: "Eber Daniel Figueroa Rios", linkedin: "https://www.linkedin.com/in/eber-daniel-fr/", zoho: "", age: "", location: "", seniority: "", tools: "", languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
     { name: "Rubén Eduardo Gamba", linkedin: "https://www.linkedin.com/in/rub%C3%A9n-eduardo-gamba-1579b122/", zoho: "", age: "", location: "", seniority: "", tools: "", languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
     { name: "Lucero Contreras Guerrero", linkedin: "https://www.linkedin.com/in/lucerocontreras15/", zoho: "", age: "", location: "", seniority: "", tools: "", languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
-    { name: "Eduardo Alejandro Sánchez Lugo", linkedin: "https://www.linkedin.com/in/eduardo-alejandro-sanchez-lugo/", zoho: "", age: "", location: "", seniority: "", tools: "", languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" }
+    { name: "Eduardo Alejandro Sánchez Lugo", linkedin: "https://www.linkedin.com/in/eduardo-alejandro-sanchez-lugo/", zoho: "", age: "", location: "", seniority: "", tools: "", languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
+    { name: "Omar Solis", linkedin: "https://www.linkedin.com/in/omar-solis-escobar/", zoho: "", age: "", location: "", seniority: "QA Senior — Teradata México (infraestructura de IA/BI)", tools: "Copilot; LLMs locales (Ollama, Llama.cpp); prompt engineering", languages: "Python, PowerShell", salary: "~65,000 MXN netos (~70,000–75,000 MXN con prestaciones/bonos)", checklist: { ingles: "Verde", experiencia: "", typescript: "", playwright: "", iaPractica: "Verde", validacionIA: "Verde", agile: "", comunicacion: "" }, extraSkills: "Jenkins, Ansible, Postman, Docker (infraestructura CI/CD); validación de seguridad de IA mediante revisión de GitHub Actions y logs; esquema de contratista (facturación vía Resico)." }
   ];
 
   function statusInfo(raw) {
