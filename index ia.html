@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seguimiento — Senior Automation SDET (IA)</title>
+<style>
+  :root { color-scheme: light; }
+
+  .viz-root {
+    --brand-red:    #BB240A;
+    --brand-blue:   #322470;
+    --brand-cream:  #E5DBD1;
+    --brand-yellow: #EDCC4D;
+    --brand-brown:  #623F1B;
+    --brand-black:  #0B0B0B;
+
+    --page-plane:     #FAF6F0;
+    --surface-1:      #FFFFFF;
+    --surface-tint:   #E5DBD1;
+    --text-primary:   #0B0B0B;
+    --text-secondary: #623F1B;
+    --text-muted:     #8A7563;
+    --gridline:       #E9E0D6;
+    --baseline:       #D8CBBC;
+    --border:         rgba(98,63,27,0.16);
+    --accent:         #322470;
+    --accent-ink:     #FFFFFF;
+    --status-progress:#BB240A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      color-scheme: dark;
+      --page-plane:     #0B0B0B;
+      --surface-1:      #1E140B;
+      --surface-tint:   #2A1D10;
+      --text-primary:   #F3EAE0;
+      --text-secondary: #E5DBD1;
+      --text-muted:     #B7A48F;
+      --gridline:       #362A1D;
+      --baseline:       #4A3A28;
+      --border:         rgba(229,219,209,0.14);
+      --accent:         #6C5CD8;
+      --accent-ink:     #FFFFFF;
+      --status-progress:#E1543A;
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    color-scheme: dark;
+    --page-plane:     #0B0B0B;
+    --surface-1:      #1E140B;
+    --surface-tint:   #2A1D10;
+    --text-primary:   #F3EAE0;
+    --text-secondary: #E5DBD1;
+    --text-muted:     #B7A48F;
+    --gridline:       #362A1D;
+    --baseline:       #4A3A28;
+    --border:         rgba(229,219,209,0.14);
+    --accent:         #6C5CD8;
+    --accent-ink:     #FFFFFF;
+    --status-progress:#E1543A;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--page-plane); color: var(--text-primary); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 20px 60px; }
+  header.top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .subtitle { color: var(--text-secondary); font-size: 14px; margin: 0; }
+  .updated { color: var(--text-muted); font-size: 13px; margin-top: 6px; }
+  .toggle-group { display: flex; gap: 8px; }
+  button.toggle-btn { border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary); border-radius: 8px; padding: 8px 12px; font-size: 13px; cursor: pointer; }
+  button.toggle-btn.accent { background: var(--accent); color: var(--accent-ink); border-color: transparent; font-weight: 600; }
+  .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
+  @media (max-width: 720px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat-tile { padding: 16px; }
+  .stat-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+  .stat-value { font-size: 28px; font-weight: 600; line-height: 1; }
+  .stat-hint { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+  .status-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(187,36,10,0.14); color: var(--brand-red); }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--status-progress); display: inline-block; }
+  section { margin-bottom: 32px; }
+  h2 { font-size: 16px; margin: 0 0 14px; display: flex; align-items: center; }
+  h2 .section-hint { font-weight: 400; font-size: 12px; color: var(--text-muted); display: block; margin-top: 2px; }
+  h2::before { content: ""; width: 11px; height: 11px; border-radius: 3px; margin-right: 9px; flex: none; }
+  h2.accent-blue::before { background: var(--brand-blue); }
+  h2.accent-red::before { background: var(--brand-red); }
+  h2.accent-yellow::before { background: var(--brand-yellow); }
+  .stat-tile.accent-red    { border-left: 4px solid var(--brand-red); }
+  .stat-tile.accent-blue   { border-left: 4px solid var(--brand-blue); }
+  .stat-tile.accent-brown  { border-left: 4px solid var(--brand-brown); }
+  .stat-tile.accent-yellow { border-left: 4px solid var(--brand-yellow); }
+  .evolution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .evolution-grid { grid-template-columns: 1fr; } }
+  .evo-card { border-top: 3px solid var(--baseline); }
+  .evo-card.before-card { border-top-color: var(--brand-brown); }
+  .evo-card.after-card { border-top-color: var(--brand-blue); }
+  .evo-card h3 { font-size: 14px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+  .evo-tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+  .evo-tag.before { background: rgba(98,63,27,0.16); color: var(--brand-brown); }
+  .evo-tag.after { background: var(--brand-yellow); color: var(--brand-black); }
+  .evo-card ul { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; }
+  .evo-card li { margin-bottom: 6px; }
+  details.full-text { margin-top: 12px; border-top: 1px solid var(--gridline); padding-top: 10px; }
+  details.full-text summary { cursor: pointer; font-size: 12.5px; color: var(--accent); font-weight: 600; }
+  details.full-text .body-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 10px; white-space: pre-wrap; }
+  .empty-state { text-align: center; padding: 24px 20px; color: var(--text-secondary); font-size: 13.5px; border: 1px dashed var(--baseline); border-radius: 10px; margin-bottom: 16px; }
+  .empty-state.accent-yellow { border-color: rgba(237,204,77,0.7); }
+  .empty-state strong { color: var(--text-primary); display: block; margin-bottom: 6px; font-size: 14px; }
+  .progress-note { font-size: 12.5px; color: var(--text-secondary); margin: 0 0 12px; }
+  .candidate-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .candidate-card + .candidate-card { margin-top: 10px; }
+  .candidate-summary { padding: 14px 16px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-size: 14px; font-weight: 600; list-style: none; }
+  .candidate-summary::-webkit-details-marker { display: none; }
+  .candidate-summary .chev { color: var(--text-muted); font-size: 12px; }
+  .candidate-badge { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--brand-brown); background: rgba(237,204,77,0.3); border: 1px solid transparent; padding: 2px 8px; border-radius: 999px; margin-left: 10px; }
+  .candidate-body { padding: 0 16px 16px; }
+  .field-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 20px; font-size: 13px; }
+  @media (max-width: 560px) { .field-grid { grid-template-columns: 1fr; } }
+  .field-label { color: var(--text-muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 2px; }
+  .field-value { color: var(--text-primary); }
+  .field-value a { color: var(--accent); }
+  .field-value.pending { color: var(--text-muted); font-style: italic; }
+  footer.note { margin-top: 8px; font-size: 12.5px; color: var(--text-muted); border-top: 1px solid var(--gridline); padding-top: 14px; }
+</style>
+</head>
+<body>
+<div class="viz-root">
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <h1 data-i18n="pageTitle">Senior Automation SDET (IA) — Outpost QA</h1>
+      <p class="subtitle" data-i18n="subtitle"></p>
+      <p class="updated" data-i18n="updatedLabel"></p>
+    </div>
+    <div class="toggle-group">
+      <button class="toggle-btn" onclick="toggleTheme()" data-i18n="themeToggle"></button>
+      <button class="toggle-btn accent" id="langBtn" onclick="toggleLang()"></button>
+    </div>
+  </header>
+
+  <div class="stats-grid">
+    <div class="card stat-tile accent-red">
+      <div class="stat-label" data-i18n="statStatusLabel"></div>
+      <span class="status-badge"><span class="status-dot"></span><span data-i18n="statStatusBadge"></span></span>
+      <div class="stat-hint" data-i18n="statStatusHint"></div>
+    </div>
+    <div class="card stat-tile accent-blue">
+      <div class="stat-label" data-i18n="statContactedLabel"></div>
+      <div class="stat-value">8</div>
+      <div class="stat-hint" data-i18n="statContactedHint"></div>
+    </div>
+    <div class="card stat-tile accent-brown">
+      <div class="stat-label" data-i18n="statCallsLabel"></div>
+      <div class="stat-value">0</div>
+      <div class="stat-hint" data-i18n="statCallsHint"></div>
+    </div>
+    <div class="card stat-tile accent-yellow">
+      <div class="stat-label" data-i18n="statVersionLabel"></div>
+      <div class="stat-value" style="font-size:20px;" data-i18n="statVersionValue"></div>
+      <div class="stat-hint" data-i18n="statVersionHint"></div>
+    </div>
+  </div>
+
+  <section>
+    <h2 class="accent-blue" data-i18n="evolutionTitle">
+      <span class="section-hint" data-i18n="evolutionHint"></span>
+    </h2>
+    <div class="evolution-grid">
+      <div class="card evo-card before-card">
+        <h3><span class="evo-tag before" data-i18n="beforeTag"></span></h3>
+        <ul>
+          <li data-i18n="beforeLi1"></li>
+          <li data-i18n="beforeLi2"></li>
+          <li data-i18n="beforeLi3"></li>
+        </ul>
+        <details class="full-text">
+          <summary data-i18n="beforeDetailsSummary"></summary>
+          <div class="body-text" data-i18n="beforeFullText"></div>
+        </details>
+      </div>
+      <div class="card evo-card after-card">
+        <h3><span class="evo-tag after" data-i18n="afterTag"></span></h3>
+        <ul>
+          <li data-i18n="afterLi1"></li>
+          <li data-i18n="afterLi2"></li>
+          <li data-i18n="afterLi3"></li>
+          <li data-i18n="afterLi4"></li>
+        </ul>
+        <details class="full-text">
+          <summary data-i18n="afterDetailsSummary"></summary>
+          <div class="body-text" data-i18n="afterFullText"></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="accent-red" data-i18n="candidatesTitle">
+      <span class="section-hint" data-i18n="candidatesHint"></span>
+    </h2>
+    <p class="progress-note" data-i18n="candidatesProgress"></p>
+
+    <div id="candidatesList"></div>
+  </section>
+
+  <section>
+    <h2 class="accent-yellow" data-i18n="companiesTitle">
+      <span class="section-hint" data-i18n="companiesHint"></span>
+    </h2>
+
+    <div class="empty-state accent-yellow">
+      <strong data-i18n="companiesEmptyTitle"></strong>
+      <span data-i18n="companiesEmptyBody"></span>
+    </div>
+  </section>
+
+  <footer class="note" data-i18n="footerNote"></footer>
+
+</div>
+</div>
+
+<script>
+  var candidates = [
+    { name: "Andrea Michel Acuña Acosta", linkedin: "https://www.linkedin.com/in/michelacostaa/" },
+    { name: "Derek Obied Melendez Franco", linkedin: "https://www.linkedin.com/in/derek-obied-melendez-franco-102203279/" },
+    { name: "Edgar Ivan Garza Dimas", linkedin: "https://www.linkedin.com/in/edgar-iv%C3%A1n-garza-dimas-bb619416b/" },
+    { name: "Daniel Roger Gonzales", linkedin: "https://www.linkedin.com/in/daniel-roger-bo/" },
+    { name: "Eber Daniel Figueroa Rios", linkedin: "https://www.linkedin.com/in/eber-daniel-fr/" },
+    { name: "Rubén Eduardo Gamba", linkedin: "https://www.linkedin.com/in/rub%C3%A9n-eduardo-gamba-1579b122/" },
+    { name: "Lucero Contreras Guerrero", linkedin: "https://www.linkedin.com/in/lucerocontreras15/" },
+    { name: "Eduardo Alejandro Sánchez Lugo", linkedin: "https://www.linkedin.com/in/eduardo-alejandro-sanchez-lugo/" }
+  ];
+
+  var translations = {
+    es: {
+      pageTitle: "Senior Automation SDET (IA) — Outpost QA",
+      subtitle: "Seguimiento del proyecto: definición del rol + investigación de mercado con perfiles de LinkedIn",
+      updatedLabel: "Última actualización: 20 de agosto, 2026",
+      themeToggle: "Cambiar tema",
+      statStatusLabel: "Estado del proyecto",
+      statStatusBadge: "Investigación de mercado",
+      statStatusHint: "JD en borrador, aún sin validar con el mercado",
+      statContactedLabel: "Perfiles de LinkedIn contactados",
+      statContactedHint: "Actualizado desde el registro de contactos",
+      statCallsLabel: "Llamadas completadas",
+      statCallsHint: "Aún ninguna llamada con detalle completo",
+      statVersionLabel: "Versión de la JD",
+      statVersionValue: "Borrador v1",
+      statVersionHint: "Pendiente de aprobación final",
+      evolutionTitle: "Evolución de la Job Description",
+      evolutionHint: "Cómo empezó este puesto (JDs de Automation SDET existentes, sin IA como eje) vs. cómo va quedando la nueva versión",
+      beforeTag: "Punto de partida",
+      afterTag: "Versión actual (borrador)",
+      beforeLi1: "Dos JDs existentes de \"Senior Automation SDET\", con responsabilidades genéricas de automatización (Playwright/TypeScript).",
+      beforeLi2: "La IA aparecía solo como una herramienta más dentro de la lista de responsabilidades (ej. \"usar Claude o Stagehand para generar tests\"), no como el eje del puesto.",
+      beforeLi3: "Sin datos de mercado sobre qué tan extendido está el uso de IA en automatización entre perfiles mexicanos, ni de rangos salariales asociados.",
+      beforeDetailsSummary: "Ver resumen introductorio original",
+      beforeFullText: "\"As a Senior Automation SDET at Outpost QA, you will own the test automation and quality efforts for entire product areas or major features. You will architect and optimize automation frameworks, lead test strategy for complex systems, and regularly collaborate across teams to deliver reliable and high-quality releases. This role offers the opportunity to mentor others, drive cross-functional quality improvements, and play a critical part in shaping the future of our engineering excellence.\" (cita textual, en inglés original)",
+      afterLi1: "Nuevo resumen del rol con la IA como parte central de cómo se trabaja, no como una tarea adicional.",
+      afterLi2: "Responsabilidades reescritas: generación y validación de código de prueba con IA, automatizaciones \"self-healing\", prompt engineering aplicado a testing, evaluación continua de nuevas herramientas de IA.",
+      afterLi3: "Requisitos ajustados: se mantienen los años de experiencia y nivel de inglés de las JDs anteriores; se añaden requisitos específicos de experiencia práctica con herramientas de IA.",
+      afterLi4: "Pendiente de validar con el mercado: qué tan estrictos deben ser los requisitos de IA y qué rango salarial es realista en México.",
+      afterDetailsSummary: "Ver resumen introductorio propuesto",
+      afterFullText: "\"Como Senior Automation SDET (IA) en Outpost QA, serás dueño de la automatización y calidad de áreas completas del producto, con la IA como parte central de cómo trabajas — no como una herramienta adicional. Arquitecturarás frameworks de automatización que combinen herramientas tradicionales con agentes y librerías impulsadas por IA, definirás la estrategia de pruebas para sistemas complejos, y decidirás continuamente qué tareas puede asumir la IA de forma confiable y cuáles requieren criterio humano. Este rol también implica mentorear al equipo en prácticas de testing asistido por IA y ayudar a definir cómo se ve la ingeniería de calidad 'AI-native' en Outpost QA.\"",
+      candidatesTitle: "Perfiles de LinkedIn contactados",
+      candidatesHint: "Se completa conforme se agenden y realicen las llamadas de descubrimiento",
+      candidatesProgress: "0 de 8 llamadas completadas — por ahora solo se ha hecho el primer contacto por LinkedIn",
+      fieldName: "Nombre",
+      fieldHeadline: "LinkedIn",
+      fieldAge: "Edad",
+      fieldLocation: "Ubicación (México)",
+      fieldSeniority: "Seniority / rol actual",
+      fieldAiTools: "Herramientas de IA que usa",
+      fieldLanguages: "Lenguajes de programación",
+      fieldSalary: "Rango salarial compartido",
+      pendingValue: "Pendiente (llamada aún no realizada)",
+      viewProfile: "Ver perfil",
+      candidateBadgePending: "Llamada pendiente",
+      footerNote: "Este dashboard se sincroniza a partir de los Sheets privados de Carito (Perfiles y Empresas). Para reflejar novedades, pídele a Claude que lo actualice y pega el nuevo código aquí — el link publicado no cambia.",
+      companiesTitle: "Empresas con posiciones similares",
+      companiesHint: "Vacantes de otras empresas para comparar responsabilidades, seniority y mercado",
+      companiesEmptyTitle: "Aún no hay vacantes registradas",
+      companiesEmptyBody: "En cuanto agregues una fila en el Sheet de empresas, aparecerá aquí en la siguiente sincronización."
+    },
+    en: {
+      pageTitle: "Senior Automation SDET (AI) — Outpost QA",
+      subtitle: "Project tracker: role definition + market research with LinkedIn profiles",
+      updatedLabel: "Last updated: August 20, 2026",
+      themeToggle: "Toggle theme",
+      statStatusLabel: "Project status",
+      statStatusBadge: "Market research",
+      statStatusHint: "JD in draft, not yet validated with the market",
+      statContactedLabel: "LinkedIn profiles contacted",
+      statContactedHint: "Updated from the contacts log",
+      statCallsLabel: "Calls completed",
+      statCallsHint: "No fully-detailed call yet",
+      statVersionLabel: "JD version",
+      statVersionValue: "Draft v1",
+      statVersionHint: "Pending final approval",
+      evolutionTitle: "Job Description evolution",
+      evolutionHint: "How this role started (existing Automation SDET JDs, without AI as the focus) vs. how the new version is shaping up",
+      beforeTag: "Starting point",
+      afterTag: "Current version (draft)",
+      beforeLi1: "Two existing \"Senior Automation SDET\" JDs, with generic automation responsibilities (Playwright/TypeScript).",
+      beforeLi2: "AI only appeared as one more tool within the list of responsibilities (e.g. \"use Claude or Stagehand to generate tests\"), not as the focus of the role.",
+      beforeLi3: "No market data yet on how widespread AI use in automation is among Mexican profiles, or the associated salary ranges.",
+      beforeDetailsSummary: "View original intro summary",
+      beforeFullText: "\"As a Senior Automation SDET at Outpost QA, you will own the test automation and quality efforts for entire product areas or major features. You will architect and optimize automation frameworks, lead test strategy for complex systems, and regularly collaborate across teams to deliver reliable and high-quality releases. This role offers the opportunity to mentor others, drive cross-functional quality improvements, and play a critical part in shaping the future of our engineering excellence.\" (verbatim quote, original English)",
+      afterLi1: "New role summary with AI as a core part of how the work gets done, not as an extra task.",
+      afterLi2: "Responsibilities rewritten: AI-assisted test code generation and validation, self-healing automations, prompt engineering applied to testing, ongoing evaluation of new AI tools.",
+      afterLi3: "Requirements adjusted: years of experience and English level carried over from the previous JDs; specific requirements added for hands-on experience with AI tools.",
+      afterLi4: "Still to validate with the market: how strict the AI requirements should be and what salary range is realistic in Mexico.",
+      afterDetailsSummary: "View proposed intro summary",
+      afterFullText: "\"As a Senior Automation SDET (AI) at Outpost QA, you will own automation and quality efforts across entire product areas, with AI at the core of how you work — not as an add-on tool. You will architect automation frameworks that combine traditional tooling with AI-driven agents and libraries, define test strategy for complex systems, and continuously decide which tasks AI can reliably take on versus which require human judgment. This role also involves mentoring the team on AI-assisted testing practices and helping define what AI-native quality engineering looks like at Outpost QA.\"",
+      candidatesTitle: "LinkedIn profiles contacted",
+      candidatesHint: "Fills in as discovery calls are scheduled and completed",
+      candidatesProgress: "0 of 8 calls completed — only initial LinkedIn contact has been made so far",
+      fieldName: "Name",
+      fieldHeadline: "LinkedIn",
+      fieldAge: "Age",
+      fieldLocation: "Location (Mexico)",
+      fieldSeniority: "Seniority / current role",
+      fieldAiTools: "AI tools they use",
+      fieldLanguages: "Programming languages",
+      fieldSalary: "Salary range shared",
+      pendingValue: "Pending (call not yet done)",
+      viewProfile: "View profile",
+      candidateBadgePending: "Call pending",
+      footerNote: "This dashboard is synced from Carito's private Sheets (Profiles and Companies). To reflect updates, ask Claude to sync it and paste the new code here — the published link stays the same.",
+      companiesTitle: "Companies with similar openings",
+      companiesHint: "Other companies' postings to compare responsibilities, seniority, and market positioning",
+      companiesEmptyTitle: "No postings logged yet",
+      companiesEmptyBody: "As soon as you add a row in the companies Sheet, it will show up here in the next sync."
+    }
+  };
+
+  var currentLang = 'es';
+
+  function renderCandidates(lang) {
+    var t = translations[lang];
+    var html = candidates.map(function(c) {
+      return '<details class="candidate-card">' +
+        '<summary class="candidate-summary"><span>' + c.name + ' <span class="candidate-badge">' + t.candidateBadgePending + '</span></span><span class="chev">▾</span></summary>' +
+        '<div class="candidate-body"><div class="field-grid">' +
+          '<div><div class="field-label">' + t.fieldName + '</div><div class="field-value">' + c.name + '</div></div>' +
+          '<div><div class="field-label">' + t.fieldHeadline + '</div><div class="field-value"><a href="' + c.linkedin + '" target="_blank" rel="noopener">' + t.viewProfile + '</a></div></div>' +
+          '<div><div class="field-label">' + t.fieldAge + '</div><div class="field-value pending">' + t.pendingValue + '</div></div>' +
+          '<div><div class="field-label">' + t.fieldLocation + '</div><div class="field-value pending">' + t.pendingValue + '</div></div>' +
+          '<div><div class="field-label">' + t.fieldSeniority + '</div><div class="field-value pending">' + t.pendingValue + '</div></div>' +
+          '<div><div class="field-label">' + t.fieldAiTools + '</div><div class="field-value pending">' + t.pendingValue + '</div></div>' +
+          '<div><div class="field-label">' + t.fieldLanguages + '</div><div class="field-value pending">' + t.pendingValue + '</div></div>' +
+          '<div><div class="field-label">' + t.fieldSalary + '</div><div class="field-value pending">' + t.pendingValue + '</div></div>' +
+        '</div></div>' +
+      '</details>';
+    }).join('');
+    document.getElementById('candidatesList').innerHTML = html;
+  }
+
+  function applyLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (translations[lang][key] !== undefined) el.textContent = translations[lang][key];
+    });
+    document.getElementById('langBtn').textContent = lang === 'es' ? 'English' : 'Español';
+    document.documentElement.setAttribute('lang', lang);
+    renderCandidates(lang);
+  }
+
+  function toggleLang() { currentLang = currentLang === 'es' ? 'en' : 'es'; applyLang(currentLang); }
+  function toggleTheme() { var root = document.documentElement; var current = root.getAttribute('data-theme'); root.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark'); }
+
+  applyLang(currentLang);
+</script>
+</body>
+</html>
