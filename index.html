@@ -66,19 +66,19 @@
   .wrap { max-width: 980px; margin: 0 auto; padding: 32px 20px 60px; }
   header.top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
   h1 { font-size: 22px; margin: 0 0 4px; }
-  .subtitle { color: var(--text-secondary); font-size: 14px; margin: 0; }
-  .updated { color: var(--text-muted); font-size: 13px; margin-top: 6px; }
+  .subtitle { color: var(--text-primary); font-size: 14px; margin: 0; }
+  .updated { color: var(--text-primary); font-size: 13px; margin-top: 6px; }
   .toggle-group { display: flex; gap: 8px; }
   button.toggle-btn { border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary); border-radius: 8px; padding: 8px 12px; font-size: 13px; cursor: pointer; }
   button.toggle-btn.accent { background: var(--accent); color: var(--accent-ink); border-color: transparent; font-weight: 600; }
   .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
   .stat-tile { padding: 16px; }
-  .stat-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+  .stat-label { font-size: 12px; color: var(--text-primary); margin-bottom: 8px; }
   .stat-value { font-size: 28px; font-weight: 600; line-height: 1; }
-  .stat-hint { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+  .stat-hint { font-size: 11px; color: var(--text-primary); margin-top: 6px; }
   section { margin-bottom: 32px; }
   h2 { font-size: 16px; margin: 0 0 3px; display: flex; align-items: center; }
-  .section-hint { font-weight: 400; font-size: 12px; color: var(--text-muted); display: block; margin: 0 0 14px 20px; }
+  .section-hint { font-weight: 400; font-size: 12px; color: var(--text-primary); display: block; margin: 0 0 14px 20px; }
   h2::before { content: ""; width: 11px; height: 11px; border-radius: 3px; margin-right: 9px; flex: none; }
   h2.accent-blue::before { background: var(--brand-blue); }
   h2.accent-red::before { background: var(--brand-red); }
@@ -86,9 +86,9 @@
   h2.accent-brown::before { background: var(--brand-brown); }
   .analysis-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 20px; }
   @media (max-width: 560px) { .analysis-grid { grid-template-columns: 1fr; } }
-  .analysis-item .field-label { color: var(--text-muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 3px; }
+  .analysis-item .field-label { color: var(--text-primary); font-size: 11.5px; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 3px; }
   .analysis-item .field-value { font-size: 13.5px; }
-  .analysis-item .field-value.pending { color: var(--text-muted); font-style: italic; }
+  .analysis-item .field-value.pending { color: var(--text-primary); font-style: italic; }
   .stat-tile.accent-red    { border-left: 4px solid var(--brand-red); }
   .stat-tile.accent-blue   { border-left: 4px solid var(--brand-blue); }
   .stat-tile.accent-brown  { border-left: 4px solid var(--brand-brown); }
@@ -99,29 +99,29 @@
   .timeline-step { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
   .timeline-step:not(:first-child)::before { content: ""; position: absolute; top: 11px; left: -50%; width: 100%; height: 2px; background: var(--baseline); z-index: 0; }
   .timeline-step.done:not(:first-child)::before { background: var(--accent); }
-  .timeline-dot { width: 24px; height: 24px; border-radius: 50%; background: var(--surface-1); border: 2px solid var(--baseline); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; z-index: 1; color: var(--text-muted); }
+  .timeline-dot { width: 24px; height: 24px; border-radius: 50%; background: var(--surface-1); border: 2px solid var(--baseline); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; z-index: 1; color: var(--text-primary); }
   .timeline-step.done .timeline-dot { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
   .timeline-step.current .timeline-dot { background: var(--surface-1); border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 4px rgba(50,36,112,0.15); }
-  .timeline-label { font-size: 11px; margin-top: 8px; color: var(--text-muted); max-width: 110px; line-height: 1.3; padding: 0 4px; }
+  .timeline-label { font-size: 11px; margin-top: 8px; color: var(--text-primary); max-width: 110px; line-height: 1.3; padding: 0 4px; }
   .timeline-step.current .timeline-label { color: var(--text-primary); font-weight: 700; }
-  .timeline-step.done .timeline-label { color: var(--text-secondary); }
+  .timeline-step.done .timeline-label { color: var(--text-primary); }
   @media (max-width: 640px) { .timeline-label { font-size: 9.5px; max-width: 78px; } .timeline-dot { width: 20px; height: 20px; } }
   .status-stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
   .status-stats-grid .stat-tile { background: var(--page-plane); border: 1px solid var(--border); border-radius: 10px; }
 
   /* Mode / distribution chart */
   .mode-chart { display: flex; flex-direction: column; gap: 10px; }
-  .mode-row { display: grid; grid-template-columns: 190px 1fr 130px; align-items: center; gap: 10px; }
+  .mode-row { display: grid; grid-template-columns: 190px 1fr; align-items: center; gap: 10px; }
   @media (max-width: 720px) { .mode-row { grid-template-columns: 1fr; gap: 4px; } }
-  .mode-row-label { font-size: 12.5px; color: var(--text-secondary); }
+  .mode-row-label { font-size: 12.5px; color: var(--text-primary); }
   .mode-bar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--gridline); }
   .mode-seg.good { background: #0ca30c; }
   .mode-seg.warning { background: #fab219; }
   .mode-seg.critical { background: #d03b3b; }
   .mode-seg.pending { background: var(--baseline); }
-  .mode-row-count { font-size: 11.5px; color: var(--text-muted); }
+  .mode-row-count { font-size: 11.5px; color: var(--text-primary); }
   .mode-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--gridline); }
-  .mode-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-secondary); }
+  .mode-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-primary); }
   .mode-legend-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
   .mode-legend-dot.good { background: #0ca30c; }
   .mode-legend-dot.warning { background: #fab219; }
@@ -130,7 +130,7 @@
 
   /* Chip list (locations) */
   .chip-list { display: flex; flex-wrap: wrap; gap: 6px; }
-  .chip { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--surface-tint); color: var(--text-secondary); border: 1px solid var(--border); }
+  .chip { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--surface-tint); color: var(--text-primary); border: 1px solid var(--border); }
 
   .evolution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 720px) { .evolution-grid { grid-template-columns: 1fr; } }
@@ -141,30 +141,31 @@
   .evo-tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
   .evo-tag.before { background: rgba(98,63,27,0.16); color: var(--brand-brown); }
   .evo-tag.after { background: var(--brand-yellow); color: var(--brand-black); }
-  .evo-card ul { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; }
+  .evo-card ul { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--text-primary); line-height: 1.6; }
   .evo-card li { margin-bottom: 6px; }
   details.full-text { margin-top: 12px; border-top: 1px solid var(--gridline); padding-top: 10px; }
   details.full-text summary { cursor: pointer; font-size: 12.5px; color: var(--accent); font-weight: 600; }
-  details.full-text .body-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 10px; white-space: pre-wrap; }
-  .empty-state { text-align: center; padding: 24px 20px; color: var(--text-secondary); font-size: 13.5px; border: 1px dashed var(--baseline); border-radius: 10px; margin-bottom: 16px; }
+  details.full-text .body-text { font-size: 13px; color: var(--text-primary); line-height: 1.6; margin-top: 10px; white-space: pre-wrap; }
+  .empty-state { text-align: center; padding: 24px 20px; color: var(--text-primary); font-size: 13.5px; border: 1px dashed var(--baseline); border-radius: 10px; margin-bottom: 16px; }
   .empty-state.accent-yellow { border-color: rgba(237,204,77,0.7); }
   .empty-state strong { color: var(--text-primary); display: block; margin-bottom: 6px; font-size: 14px; }
-  .progress-note { font-size: 12.5px; color: var(--text-secondary); margin: 0 0 12px; }
+  .progress-note { font-size: 12.5px; color: var(--text-primary); margin: 0 0 12px; }
   .candidate-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
   .candidate-card + .candidate-card { margin-top: 10px; }
   .candidate-summary { padding: 14px 16px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-size: 14px; font-weight: 600; list-style: none; }
   .candidate-summary::-webkit-details-marker { display: none; }
-  .candidate-summary .chev { color: var(--text-muted); font-size: 12px; }
+  .candidate-summary .chev { color: var(--text-primary); font-size: 12px; }
+  .candidate-name-done { color: #0ca30c; }
   .candidate-badge { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--brand-brown); background: rgba(237,204,77,0.3); border: 1px solid transparent; padding: 2px 8px; border-radius: 999px; margin-left: 10px; }
   .candidate-body { padding: 0 16px 16px; }
   .field-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 20px; font-size: 13px; }
   @media (max-width: 560px) { .field-grid { grid-template-columns: 1fr; } }
-  .field-label { color: var(--text-muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 2px; }
+  .field-label { color: var(--text-primary); font-size: 11.5px; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 2px; }
   .field-value { color: var(--text-primary); }
   .field-value a { color: var(--accent); }
-  .field-value.pending { color: var(--text-muted); font-style: italic; }
+  .field-value.pending { color: var(--text-primary); font-style: italic; }
   .checklist { margin-top: 16px; border-top: 1px solid var(--gridline); padding-top: 12px; }
-  .checklist-title { font-size: 11.5px; text-transform: uppercase; letter-spacing: .03em; color: var(--text-muted); margin-bottom: 8px; }
+  .checklist-title { font-size: 11.5px; text-transform: uppercase; letter-spacing: .03em; color: var(--text-primary); margin-bottom: 8px; }
   .checklist-row { display: flex; align-items: center; gap: 8px; font-size: 13px; padding: 5px 0; border-bottom: 1px solid var(--gridline); }
   .checklist-row:last-child { border-bottom: none; }
   .checklist-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
@@ -177,7 +178,7 @@
   .checklist-status.good { color: #0ca30c; background: rgba(12,163,12,0.12); }
   .checklist-status.warning { color: #8A6D00; background: rgba(250,178,25,0.18); }
   .checklist-status.critical { color: #d03b3b; background: rgba(208,59,59,0.12); }
-  .checklist-status.pending { color: var(--text-muted); background: var(--page-plane); }
+  .checklist-status.pending { color: var(--text-primary); background: var(--page-plane); }
   .extra-skills { margin-top: 14px; border-top: 1px solid var(--gridline); padding-top: 12px; }
   .extra-skills .field-value { font-size: 13px; }
 </style>
@@ -281,6 +282,14 @@
     return c;
   }
 
+  // Se considera que ya hay datos de llamada capturados cuando al menos 4
+  // de los 8 puntos del checklist tienen un valor (Verde/Amarillo/Rojo/NA, etc.).
+  var CALL_DATA_MIN_ITEMS = 4;
+  function hasCallData(c) {
+    var filled = JD_ITEMS.filter(function(i) { return (c.checklist[i.key] || '').trim(); }).length;
+    return filled >= CALL_DATA_MIN_ITEMS;
+  }
+
   // Etapas del proyecto — mueve currentStepIndex conforme avanza (0 = primera etapa).
   var PROJECT_STEPS = [
     { key: "marketResearch", es: "Investigación de mercado", en: "Market research" },
@@ -307,16 +316,16 @@
   }
 
   var candidates = [
-    { name: "Andrea Michel Acuña Acosta", shortName: "Michel Acosta", yearsExperience: 9, linkedin: "https://www.linkedin.com/in/michelacostaa/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001637272&submodule=Candidates", age: "No proporcionado", location: "Hermosillo", seniority: "9 años de experiencia en ingeniería de software", tools: "Claude (generación de código/automatización)", aiToolTags: ["Claude"], languages: "No proporcionado", salary: "~50,000 MXN brutos (último salario reportado)", checklist: { ingles: "Amarillo", experiencia: "Verde", typescript: "", playwright: "Rojo", iaPractica: "Amarillo", validacionIA: "Verde", agile: "", comunicacion: "" }, extraSkills: "Cypress (herramienta principal de automatización); ha construido frameworks de automatización desde cero. Aún no ha utilizado Playwright." },
-    { name: "Derek Obied Melendez Franco", shortName: "Derek Melendez", yearsExperience: null, linkedin: "https://www.linkedin.com/in/derek-obied-melendez-franco-102203279/", zoho: "", age: "", location: "", seniority: "", tools: "", aiToolTags: [], languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
-    { name: "Edgar Ivan Garza Dimas", shortName: "Edgar Garza", yearsExperience: null, linkedin: "https://www.linkedin.com/in/edgar-iv%C3%A1n-garza-dimas-bb619416b/", zoho: "", age: "", location: "", seniority: "", tools: "", aiToolTags: [], languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
-    { name: "Daniel Roger Gonzales", shortName: "Daniel Roger", yearsExperience: null, linkedin: "https://www.linkedin.com/in/daniel-roger-bo/", zoho: "", age: "", location: "", seniority: "", tools: "", aiToolTags: [], languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
-    { name: "Eber Daniel Figueroa Rios", shortName: "Eber Figueroa", yearsExperience: null, linkedin: "https://www.linkedin.com/in/eber-daniel-fr/", zoho: "", age: "", location: "", seniority: "", tools: "", aiToolTags: [], languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
-    { name: "Rubén Eduardo Gamba", shortName: "Rubén Gamba", yearsExperience: 30, yearsPlus: true, linkedin: "https://www.linkedin.com/in/rub%C3%A9n-eduardo-gamba-1579b122/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001642514&submodule=Candidates", age: "Aproximadamente 50 años", location: "Buenos Aires, Argentina", seniority: "Independent QA Engineer | AI QA Strategist — 30+ años de trayectoria en QA/QC", tools: "Claude, QMetry (prompt engineering); Agentic AI: Tricentis Agentic, Reflect, Testim, BearQ, Kane AI, QMetric", aiToolTags: ["Claude", "QMetry", "Prompt engineering", "Tricentis Agentic", "Reflect", "Testim", "BearQ", "Kane AI", "QMetric"], languages: "SQL, Groovy, VB Script, Java (J2SE/J2EE), PL/SQL, HTML/XML/PHP y otros (ver CV). Su CV lista 'Typestry' en lenguajes — no queda claro si se refiere a TypeScript.", salary: "~$50,000 MXN (equivalente aprox. de $3,000 USD a tipo de cambio de 16.94)", checklist: { ingles: "Rojo", experiencia: "Verde", typescript: "", playwright: "Rojo", iaPractica: "Verde", validacionIA: "Verde", agile: "Verde", comunicacion: "Verde" }, extraSkills: "Tricentis Tosca (instructor certificado), TestComplete, Katalon, testing enterprise SAP; diseño de business cases/ROI/CapEx-OpEx; 30 años de trayectoria en banca, retail, seguros y tecnología; coaching y formación de equipos QA; portugués A1." },
-    { name: "Lucero Contreras Guerrero", shortName: "Lucero Contreras", yearsExperience: null, linkedin: "https://www.linkedin.com/in/lucerocontreras15/", zoho: "", age: "", location: "", seniority: "", tools: "", aiToolTags: [], languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
-    { name: "Eduardo Alejandro Sánchez Lugo", shortName: "Eduardo Sánchez", yearsExperience: null, linkedin: "https://www.linkedin.com/in/eduardo-alejandro-sanchez-lugo/", zoho: "", age: "", location: "", seniority: "", tools: "", aiToolTags: [], languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
+    { name: "Andrea Michel Acuña Acosta", shortName: "Michel Acosta", yearsExperience: 9, linkedin: "https://www.linkedin.com/in/michelacostaa/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001637272&submodule=Candidates", age: "No proporcionado", location: "Hermosillo", seniority: "9 años de experiencia en ingeniería de software", tools: "Claude (generación de código/automatización)", aiToolTags: ["Claude"], languages: "No proporcionado", salary: "~50,000 MXN brutos (último salario reportado)", checklist: { ingles: "Amarillo", experiencia: "Verde", typescript: "NA", playwright: "Rojo", iaPractica: "Amarillo", validacionIA: "Verde", agile: "NA", comunicacion: "Amarillo" }, extraSkills: "Cypress (herramienta principal de automatización); ha construido frameworks de automatización desde cero. Aún no ha utilizado Playwright." },
+    { name: "Derek Obied Melendez Franco", shortName: "Derek Melendez", yearsExperience: 4, linkedin: "https://www.linkedin.com/in/derek-obied-melendez-franco-102203279/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001642114&submodule=Candidates", age: "", location: "Chihuahua", seniority: "L2 (4 años de experiencia)", tools: "", aiToolTags: [], languages: "Python, Java, JavaScript, TypeScript, C#, SQL", salary: "", checklist: emptyChecklist(), extraSkills: "" },
+    { name: "Edgar Ivan Garza Dimas", shortName: "Edgar Garza", yearsExperience: 22, yearsApprox: true, linkedin: "https://www.linkedin.com/in/edgar-iv%C3%A1n-garza-dimas-bb619416b/", zoho: "", age: "45 años", location: "Reynosa, Tamaulipas", seniority: "Quality / Continuous Improvement Engineer — 22-23 años en industria maquiladora (17 en calidad); perfil de manufactura/hardware, no de automatización de software. En la llamada se le propuso como alternativa la vacante de Senior Hardware Test Engineer.", tools: "No ha implementado IA directamente en equipos de prueba; la ha usado de forma general para mejoras de proceso, sin detalle específico de herramienta.", aiToolTags: [], languages: "Ninguno — no realiza programación directa (confirmado explícitamente en la llamada).", salary: "~$40,000 MXN mensuales (compensación anterior); abierto a negociar según modalidad", checklist: { ingles: "Verde", experiencia: "Rojo", typescript: "Rojo", playwright: "Rojo", iaPractica: "Rojo", validacionIA: "Rojo", agile: "Amarillo", comunicacion: "Verde" }, extraSkills: "Sistemas de gestión de calidad (ISO 9001, IATF 16949, AS9100), APQP/PPAP, Six Sigma (Green Belt), auditorías internas/externas, gestión de crisis de línea y trazabilidad de componentes, validación de test fixtures y señales de hardware — perfil fuerte para el rol alterno de Senior Hardware Test Engineer." },
+    { name: "Daniel Roger Gonzales", shortName: "Daniel Roger", yearsExperience: 5, linkedin: "https://www.linkedin.com/in/daniel-roger-bo/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001642317&submodule=Candidates", age: "", location: "Bolivia", seniority: "L2 (5 años de experiencia)", tools: "", aiToolTags: [], languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
+    { name: "Eber Daniel Figueroa Rios", shortName: "Eber Figueroa", yearsExperience: 12, linkedin: "https://www.linkedin.com/in/eber-daniel-fr/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001642421&submodule=Candidates", age: "", location: "Jalisco", seniority: "L3 (12 años de experiencia)", tools: "", aiToolTags: [], languages: "", salary: "", checklist: emptyChecklist(), extraSkills: "" },
+    { name: "Rubén Eduardo Gamba", shortName: "Rubén Gamba", yearsExperience: 30, yearsPlus: true, linkedin: "https://www.linkedin.com/in/rub%C3%A9n-eduardo-gamba-1579b122/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001642514&submodule=Candidates#", age: "Aproximadamente 50 años", location: "Argentina", seniority: "Independent QA Engineer | AI QA Strategist — 30+ años de trayectoria en QA/QC", tools: "Claude, QMetry (prompt engineering); Agentic AI: Tricentis Agentic, Reflect, Testim, BearQ, Kane AI, QMetric", aiToolTags: ["Claude", "QMetry", "Prompt engineering", "Tricentis Agentic", "Reflect", "Testim", "BearQ", "Kane AI", "QMetric"], languages: "SQL, Groovy, VB Script, Java (J2SE/J2EE), PL/SQL, HTML/XML/PHP, TypeScript", salary: "$50,000 MXN brutos", checklist: { ingles: "Rojo", experiencia: "Verde", typescript: "Verde", playwright: "Rojo", iaPractica: "Verde", validacionIA: "Verde", agile: "Verde", comunicacion: "Verde" }, extraSkills: "Tricentis Tosca (instructor certificado), TestComplete, Katalon, testing enterprise SAP; diseño de business cases/ROI/CapEx-OpEx; 30 años de trayectoria en banca, retail, seguros y tecnología; coaching y formación de equipos QA; portugués A1." },
+    { name: "Lucero Contreras Guerrero", shortName: "Lucero Contreras", yearsExperience: 11, linkedin: "https://www.linkedin.com/in/lucerocontreras15/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001642642&submodule=Candidates", age: "", location: "Queretaro", seniority: "L3 (11 años de experiencia)", tools: "", aiToolTags: [], languages: "", salary: "", checklist: { ingles: "Rojo", experiencia: "", typescript: "", playwright: "", iaPractica: "", validacionIA: "", agile: "", comunicacion: "" }, extraSkills: "" },
+    { name: "Eduardo Alejandro Sánchez Lugo", shortName: "Eduardo Sánchez", yearsExperience: 9, linkedin: "https://www.linkedin.com/in/eduardo-alejandro-sanchez-lugo/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001642744&submodule=Candidates", age: "", location: "Estado de Mexico", seniority: "L3 (9 años de experiencia)", tools: "", aiToolTags: [], languages: "", salary: "", checklist: { ingles: "Amarillo", experiencia: "", typescript: "", playwright: "", iaPractica: "", validacionIA: "", agile: "", comunicacion: "" }, extraSkills: "" },
     { name: "Omar Solis", shortName: "Omar Solis", yearsExperience: null, linkedin: "https://www.linkedin.com/in/omar-solis-escobar/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001633001&submodule=Candidates", age: "35 (aproximado)", location: "Ciudad de México", seniority: "QA Senior — Teradata México (infraestructura de IA/BI)", tools: "Copilot; LLMs locales (Ollama, Llama.cpp); prompt engineering", aiToolTags: ["Copilot", "Ollama", "Llama.cpp", "Prompt engineering"], languages: "Python, PowerShell", salary: "$75,000 MXN brutos", checklist: { ingles: "Verde", experiencia: "", typescript: "", playwright: "", iaPractica: "Verde", validacionIA: "Verde", agile: "", comunicacion: "" }, extraSkills: "Jenkins, Ansible, Postman, Docker (infraestructura CI/CD); validación de seguridad de IA mediante revisión de GitHub Actions y logs; esquema de contratista (facturación vía Resico)." },
-    { name: "Lilia Carolina Tapia Ledesma", shortName: "Carolina Tapia", yearsExperience: 6, yearsApprox: true, linkedin: "https://www.linkedin.com/in/lilia-carolina-tapia-ledesma-6a6441189/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001653190&submodule=Candidates", age: "29 años", location: "Mazatlán, Sinaloa", seniority: "QA Automation Engineer / SDET — Deloitte Consulting (cliente Square), ago 2023–jul 2026. Nota: esta llamada fue principalmente para una vacante de Manual Tester (contrato de 2 meses); se le identificó como prospecto para transición a Automation SDET (IA) a futuro.", tools: "Claude Code + prompt engineering (conversión de casos manuales de TestRail a scripts automatizados; revisión de automatización generada por IA antes de fusionar vía Buildkite). Certificación: Claude Code in Action — Anthropic Academy.", aiToolTags: ["Claude Code", "Prompt engineering"], languages: "Selenium con Python, SQL", salary: "No proporcionado", checklist: { ingles: "Verde", experiencia: "Verde", typescript: "", playwright: "", iaPractica: "Verde", validacionIA: "Verde", agile: "Verde", comunicacion: "Verde" }, extraSkills: "TestRail, Jira, Linear, GitHub, Buildkite (CI/CD), Android Studio, Xcode, Postman; testing de hardware integrado (wearables, POS); ISTQB Foundation Level y Advanced Level Test Analyst; multiplataforma (macOS/Linux/Windows)." }
+    { name: "Lilia Carolina Tapia Ledesma", shortName: "Carolina Tapia", yearsExperience: 6, yearsApprox: true, linkedin: "https://www.linkedin.com/in/lilia-carolina-tapia-ledesma-6a6441189/", zoho: "https://recruit.zoho.com/recruit/org910839933/EntityInfo.do?module=Candidates&id=844027000001653190&submodule=Candidates", age: "29 años", location: "Mazatlán", seniority: "QA Automation Engineer / SDET — Deloitte Consulting (cliente Square), ago 2023–jul 2026. Nota: esta llamada fue principalmente para una vacante de Manual Tester (contrato de 2 meses); se le identificó como prospecto para transición a Automation SDET (IA) a futuro.", tools: "Claude Code + prompt engineering (conversión de casos manuales de TestRail a scripts automatizados; revisión de automatización generada por IA antes de fusionar vía Buildkite). Certificación: Claude Code in Action — Anthropic Academy.", aiToolTags: ["Claude Code", "Prompt engineering"], languages: "Selenium con Python, SQL", salary: "No proporcionado", checklist: { ingles: "Verde", experiencia: "Verde", typescript: "", playwright: "", iaPractica: "Verde", validacionIA: "Verde", agile: "Verde", comunicacion: "Verde" }, extraSkills: "TestRail, Jira, Linear, GitHub, Buildkite (CI/CD), Android Studio, Xcode, Postman; testing de hardware integrado (wearables, POS); ISTQB Foundation Level y Advanced Level Test Analyst; multiplataforma (macOS/Linux/Windows)." }
   ];
 
   function statusInfo(raw) {
@@ -340,7 +349,7 @@
     es: {
       pageTitle: "Senior Automation SDET (IA) — Outpost QA",
       subtitle: "Seguimiento del proyecto: definición del rol + investigación de mercado con perfiles de LinkedIn",
-      updatedLabel: "Última actualización: 25 de agosto, 2026",
+      updatedLabel: "Última actualización: 27 de agosto, 2026",
       themeToggle: "Cambiar tema",
       statStatusLabel: "Estado del proyecto",
       statStatusHint: "JD en borrador, aún sin validar con el mercado",
@@ -402,7 +411,7 @@
     en: {
       pageTitle: "Senior Automation SDET (AI) — Outpost QA",
       subtitle: "Project tracker: role definition + market research with LinkedIn profiles",
-      updatedLabel: "Last updated: August 25, 2026",
+      updatedLabel: "Last updated: August 27, 2026",
       themeToggle: "Toggle theme",
       statStatusLabel: "Project status",
       statStatusHint: "JD in draft, not yet validated with the market",
@@ -473,13 +482,14 @@
   function renderCandidates(lang) {
     var t = translations[lang];
     var html = candidates.map(function(c) {
-      var hasDetail = [c.age, c.location, c.seniority, c.tools, c.languages, c.salary].some(function(v) { return (v || "").trim(); });
-      var badge = hasDetail ? t.candidateBadgeDone : t.candidateBadgePending;
+      var callDataDone = hasCallData(c);
+      var nameHtml = callDataDone ? '<span class="candidate-name-done">' + c.name + '</span>' : c.name;
+      var badgeHtml = callDataDone ? '' : ' <span class="candidate-badge">' + t.candidateBadgePending + '</span>';
       var zohoField = c.zoho && c.zoho.trim()
         ? '<div class="field-value"><a href="' + c.zoho + '" target="_blank" rel="noopener">' + t.viewProfile + '</a></div>'
         : '<div class="field-value pending">' + t.pendingValue + '</div>';
       return '<details class="candidate-card">' +
-        '<summary class="candidate-summary"><span>' + c.name + ' <span class="candidate-badge">' + badge + '</span></span><span class="chev">▾</span></summary>' +
+        '<summary class="candidate-summary"><span>' + nameHtml + badgeHtml + '</span><span class="chev">▾</span></summary>' +
         '<div class="candidate-body"><div class="field-grid">' +
           '<div><div class="field-label">' + t.fieldName + '</div><div class="field-value">' + c.name + '</div></div>' +
           '<div><div class="field-label">' + t.fieldHeadline + '</div><div class="field-value"><a href="' + c.linkedin + '" target="_blank" rel="noopener">' + t.viewProfile + '</a></div></div>' +
@@ -513,9 +523,7 @@
   }
 
   function callsCompletedCount() {
-    return candidates.filter(function(c) {
-      return JD_ITEMS.some(function(i) { return (c.checklist[i.key] || '').trim(); });
-    }).length;
+    return candidates.filter(hasCallData).length;
   }
 
   function renderTimeline(lang) {
@@ -560,13 +568,9 @@
         var pct = (counts[k] / total * 100);
         return '<div class="mode-seg ' + k + '" style="width:' + pct + '%" title="' + t.statusLabels[k] + ': ' + counts[k] + '"></div>';
       }).join('');
-      var summary = ['good', 'warning', 'critical'].filter(function(k) { return counts[k] > 0; })
-        .map(function(k) { return counts[k] + ' ' + t.statusLabels[k].toLowerCase(); }).join(' · ');
-      if (!summary) summary = t.statusLabels.pending.toLowerCase();
       return '<div class="mode-row">' +
           '<div class="mode-row-label">' + item[lang] + '</div>' +
           '<div class="mode-bar">' + segs + '</div>' +
-          '<div class="mode-row-count">' + summary + '</div>' +
         '</div>';
     }).join('');
 
@@ -610,25 +614,30 @@
   function renderAnalysis(lang) {
     var t = translations[lang];
     var total = candidates.length;
-    var withDetail = candidates.filter(function(c) {
-      return [c.age, c.location, c.seniority, c.tools, c.languages, c.salary].some(function(v) { return (v || "").trim(); });
-    }).length;
+    var withDetail = callsCompletedCount();
     var locations = uniqueNonEmpty(candidates.map(function(c) { return c.location; }));
     var tools = topTools(6);
     var salaryRange = salaryRangeText();
 
     var withLevel = candidates.filter(function(c) { return seniorityLevel(c.yearsExperience) !== null; });
     var withoutLevel = candidates.filter(function(c) { return seniorityLevel(c.yearsExperience) === null; });
-    var levelChips = withLevel.map(function(c) {
-      var yearsLabel = (c.yearsApprox ? '~' : '') + c.yearsExperience + (c.yearsPlus ? '+' : '') + (lang === 'es' ? (c.yearsExperience === 1 ? ' año' : ' años') : (c.yearsExperience === 1 ? ' yr' : ' yrs'));
-      return c.shortName + ' — ' + seniorityLevel(c.yearsExperience) + ' (' + yearsLabel + ')';
-    });
+    var yearsLabelFor = function(c) {
+      return (c.yearsApprox ? '~' : '') + c.yearsExperience + (c.yearsPlus ? '+' : '') + (lang === 'es' ? (c.yearsExperience === 1 ? ' año' : ' años') : (c.yearsExperience === 1 ? ' yr' : ' yrs'));
+    };
+    var seniorityRangeText = '';
+    if (withLevel.length) {
+      var minC = withLevel.reduce(function(a, b) { return b.yearsExperience < a.yearsExperience ? b : a; });
+      var maxC = withLevel.reduce(function(a, b) { return b.yearsExperience > a.yearsExperience ? b : a; });
+      var minText = seniorityLevel(minC.yearsExperience) + ' (' + yearsLabelFor(minC) + ')';
+      var maxText = seniorityLevel(maxC.yearsExperience) + ' (' + yearsLabelFor(maxC) + ')';
+      seniorityRangeText = minC === maxC ? minText : minText + ' – ' + maxText;
+    }
 
     var toolsValue = tools.length
       ? tools.map(function(x) { return x.tag + ' (' + x.count + ')'; }).join(', ')
       : t.pendingValue;
     var locationsValue = locations.length ? chipList(locations) : ('<span class="field-value pending">' + t.pendingValue + '</span>');
-    var seniorityValue = levelChips.length ? chipList(levelChips) : ('<span class="field-value pending">' + t.pendingValue + '</span>');
+    var seniorityValue = seniorityRangeText ? ('<div class="field-value">' + seniorityRangeText + '</div>') : ('<span class="field-value pending">' + t.pendingValue + '</span>');
     var seniorityNote = withoutLevel.length
       ? '<div class="mode-row-count" style="margin-top:6px;">' + t.seniorityMissingNote.replace('{n}', withoutLevel.length) + '</div>'
       : '';
